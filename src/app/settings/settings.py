@@ -7,10 +7,13 @@ class Settings(BaseSettings):
     log_level: str = "info"
 
     openai_api_key: str
-    openai_model: str = "gpt-4o-mini"
-    openai_temperature: float = 0.2
-    openai_embedding_model: str = 'text-embedding-3-small'
-
+    openai_default_model: str = "gpt-4o-mini"
+    openai_default_temperature: float = 0.2
+    openai_default_embedding_model: str = 'text-embedding-3-small'
+    
+    default_timeout_seconds: int = 30
+    default_max_repair_attemps: int = 1
+    
     pg_database_url: str
     pg_vector_collection_name: str = "gpt5_collection"
 

@@ -115,7 +115,6 @@ class OpenAILangChainAdapter(LLMPort):
         self._default_temperature = default_temperature
         self._max_repair_attempts = max_repair_attemps
 
-
         self._client = ChatOpenAI(
             api_key=api_key,
             model=default_model,
