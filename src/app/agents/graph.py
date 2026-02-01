@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, START, END
 
 from app.agents.state import AgentState
 from app.agents.nodes.resolver import resolver_node
@@ -18,14 +18,17 @@ def build_graph(llm: LLMPort):
     g.add_node("classifier", classifier_node(llm))
     g.add_node("classifier_judge", classifier_judge_node)
 
-    g.set_entry_point("resolver")
+    g.add_edge(START, "resolver")
+    g.add_edge("resolver", "dedupe")
+    g.add_edge("dedupe", "classifier")
+    g.add_edge("classifier_judge", END)
 
     g.add_conditional_edges(
         "classifier",
         route_node,
         {
             "judge": "classifier_judge",
+            "end": END,
         },
     )
-    
     return g.compile()
