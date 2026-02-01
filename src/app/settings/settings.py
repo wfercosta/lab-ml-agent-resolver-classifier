@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     openai_api_key: str
     openai_default_model: str = "gpt-4o-mini"
     openai_default_temperature: float = 0.2
-    openai_default_embedding_model: str = 'text-embedding-3-small'
+    openai_default_embedding_model: str = "text-embedding-3-small"
 
     aws_region: str = "sa-east-1"
     sqs_queue_url: str = "teste"
