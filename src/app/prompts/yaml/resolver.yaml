@@ -1,0 +1,23 @@
+id: resolver
+version: 1
+model:
+  temperature: 0.2
+  max_tokens: 512
+messages:
+  - role: system
+    content: |
+      Você é um classificador. Responda apenas JSON.
+  - role: user
+    content: |
+      Texto: "{{input}}"
+output_schema:
+  type: object
+  required: 
+  - intent
+  - confidence
+  properties:
+    intent:
+      type: string
+    confidence: 
+      type: number
+  
