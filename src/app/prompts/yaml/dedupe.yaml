@@ -1,4 +1,4 @@
-id: resolver-agent
+id: dedupe-agent
 version: 1
 model:
   temperature: 0.2
@@ -9,7 +9,7 @@ messages:
       Você é um classificador. Responda apenas JSON.
   - role: user
     content: |
-      Texto: "{{input}}"
+      Texto: "{{input_text}}"
 output_schema:
   type: object
   required: 

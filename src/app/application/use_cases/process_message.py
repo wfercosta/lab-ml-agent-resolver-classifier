@@ -27,14 +27,13 @@ class ProcessMessage:
         return WorkResult(
             correlation_id=final_state.get("correlation_id", message_id),
             output_text=final_state.get("final_output", ""),
-            intent=final_state.get("intent"),
             details={
-                "confidence": final_state.get("confidence"),
-                "agent_a": final_state.get("agent_a"),
-                "agent_b": final_state.get("agent_b"),
+                "agent_resolver": final_state.get("agent_resolver"),
+                "agent_dedupe": final_state.get("agent_dedupe"),
+                "agent_classifier": final_state.get("agent_classifier"),
+                "agent_classifier_judge": final_state.get("agent_classifier_judge"),
             },
         )
-
 
     def _parse_body(self, raw_body: str, message_id:str) -> WorkItem:
         try:

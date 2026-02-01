@@ -6,7 +6,7 @@ def dedupe_node(llm: LLMPort):
     def _run(state: AgentState) -> AgentState:
         data = llm.invoke_structured(
             LLMRequest(
-                prompt_id="resolver-agent",
+                prompt_id="dedupe-agent",
                 variables={"input_text": state["input_text"]},
                 correlation_id=state.get("correlation_id"),
             )
