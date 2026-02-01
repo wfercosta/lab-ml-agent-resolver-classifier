@@ -40,9 +40,9 @@ class ProcessMessage:
         try:
             data: Dict[str, Any] = json.loads(raw_body)
             return WorkItem(
-                correlation_id=data.get("correlation_id", message_id)
+                correlation_id=data.get("correlation_id", message_id),
                 input_text=data["input_text"],
-                metadata=data.get("metadata", {})
+                metadata=data.get("metadata", {}),
             )
         except KeyError as e:
             raise PermanentError(f"missing field: {e}") from e

@@ -11,7 +11,8 @@ class Settings(BaseSettings):
     openai_default_temperature: float = 0.2
     openai_default_embedding_model: str = 'text-embedding-3-small'
 
-    sqs_queue_url: str
+    aws_region: str = "sa-east-1"
+    sqs_queue_url: str = "teste"
     sqs_max_messages: int = 10
     sqs_wait_time_seconds: int = 20
     sqs_visibility_timeout: int = 120
