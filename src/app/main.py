@@ -53,16 +53,16 @@ def main():
 
             futures = []
             for m in messages:
-                futures.append(pool.submit(_handle_one, usecase, queue, m.message_id, m.receipt_handle, m.body))
+                futures.append(pool.submit(_handle_one, use_case, queue, m.message_id, m.receipt_handle, m.body))
 
             for f in concurrent.futures.as_completed(futures):
                 _ = f.result()
 
 
-def _handle_one(usecase: ProcessMessage, queue: SqsQueueAdapter, message_id: str, receipt: str, body: str) -> None:
+def _handle_one(use_case: ProcessMessage, queue: SqsQueueAdapter, message_id: str, receipt: str, body: str) -> None:
     started = time.time()
     try:
-        result = usecase.execute(body, message_id=message_id)
+        result = use_case.execute(body, message_id=message_id)
         queue.delete(receipt)
         log.info(
             "message_processed",
