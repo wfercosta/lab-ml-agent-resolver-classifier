@@ -37,7 +37,7 @@ def main():
         "worker_started",
         queue_url=settings.sqs_queue_url,
         concurrency=settings.worker_concurrency,
-        model=settings.openai_model,
+        model=settings.openai_default_model,
     )
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=settings.worker_concurrency) as pool:
